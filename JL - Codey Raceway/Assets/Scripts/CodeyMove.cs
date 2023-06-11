@@ -18,10 +18,9 @@ public class CodeyMove : MonoBehaviour
     }
     void Update()
     {
-       
         if (canMove)
         {
-
+            
             float vertical = Input.GetAxis("Vertical");
             float horizontal = Input.GetAxis("Horizontal");            
             Vector3 rotation = new Vector3(0, horizontal * _rotationSpeed * Time.deltaTime, 0);
