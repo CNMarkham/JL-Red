@@ -5,6 +5,7 @@ using UnityEngine;
 public class checkpointCollision : MonoBehaviour
 {
 
+    public CheckpointCounter count;
     public bool didCollide;
 
     // Start is called before the first frame update
@@ -19,6 +20,8 @@ public class checkpointCollision : MonoBehaviour
         if (other.gameObject.tag == "Codey" && didCollide == false)
         {
             didCollide = true;
+            count.triggeredCheckPoints++;
+
         }
     }
 }

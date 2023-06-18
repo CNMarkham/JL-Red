@@ -11,6 +11,6 @@ public class CheckpointCounter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        numberOfCheckpoints = 1;
+        numberOfCheckpoints = GameObject.FindGameObjectsWithTag("checkpoint").Length;
     }
 }
