@@ -7,6 +7,7 @@ TagManager:
   - Codey
   - checkpoint
   - itemBoxes
+  - obstacle
   layers:
   - Default
   - TransparentFX
