@@ -8701,6 +8701,7 @@ MonoBehaviour:
   powerupList:
   - {fileID: 2772761566884235160, guid: f03b9c27f0e1f6e4daa38cca45d94ac7, type: 3}
   - {fileID: 2772761566884235160, guid: 3dc4467b53e8c3446a5da2e8c24ff5db, type: 3}
+  - {fileID: 6851773503106686020, guid: 4e51be627fc0e6542bca0787c73b4a9f, type: 3}
   randomNumberInList: 0
   chosenPowerup: {fileID: 0}
 --- !u!1001 &1608612426

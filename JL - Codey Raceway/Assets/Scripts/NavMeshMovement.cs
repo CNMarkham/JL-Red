@@ -9,20 +9,31 @@ public class NavMeshMovement : MonoBehaviour
     public Transform goal;
     private NavMeshAgent agent;
     public Vector3 avatarPosition;
-    public Transform avatar;
+    public GameObject avatar;
+    public float smallestDistance = 1000;
+    public GameObject closestDistance;
+    public float Distance;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         obstacles = GameObject.FindGameObjectsWithTag("obstacle");
-        avatarPosition = gameObject.transform.position;
+        avatarPosition = avatar.transform.position;
 
-        for (int i = 0; i <= obstacles.Length; i++)
+        for (int i = 0; i < obstacles.Length; i++)
         {
-            Vector3.Distance(avatarPosition, obstacles[i].transform.position);
+            Distance = Mathf.Abs(Vector3.Distance(avatarPosition, obstacles[i].transform.position));
+            if (Distance < smallestDistance)
+            {
+
+                smallestDistance = Distance;
+                closestDistance = obstacles[i];
+            }
+            
         }
 
+        goal = closestDistance.transform;
         agent.destination = goal.position;
     }
     // Update is called once per frame
