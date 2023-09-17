@@ -20,13 +20,13 @@ public class TimersCountdown : MonoBehaviour
         {
             totalCountdownTime -= Time.deltaTime;
             startCountdown.text = Mathf.Round(totalCountdownTime).ToString();
-            CodeyMove.Speed = 0f;
+            CodeyMove.canMove = false;
         }
         if(totalCountdownTime <= 0)
         {
             totalLapTime -= Time.deltaTime;
             lapTime.text = Mathf.Round(totalLapTime).ToString();
-            CodeyMove.Speed = 1000f;
+            CodeyMove.canMove = true;
             startCountdown.enabled = false;
         }
         if(totalLapTime < 0)
