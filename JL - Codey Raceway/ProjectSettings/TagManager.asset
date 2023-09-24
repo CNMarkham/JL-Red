@@ -8,6 +8,7 @@ TagManager:
   - checkpoint
   - itemBoxes
   - obstacle
+  - terrain
   layers:
   - Default
   - TransparentFX

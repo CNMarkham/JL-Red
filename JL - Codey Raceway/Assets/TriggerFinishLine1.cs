@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TriggerFinishLine1 : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class TriggerFinishLine1 : MonoBehaviour
         {
             if (checkpointTracker.triggeredCheckPoints == checkpointTracker.numberOfCheckpoints)
             {
-                print("You Win!");
+                SceneManager.LoadScene(1);
             }
             else
             {

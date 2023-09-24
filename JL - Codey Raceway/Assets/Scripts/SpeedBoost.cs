@@ -27,9 +27,10 @@ public class SpeedBoost : MonoBehaviour
 
     IEnumerator Speed()
     {
-
-        yield return new WaitForSeconds(50f);
-        avatar.GetComponent<CodeyMove>().Speed -= speedBoost;
+        gameObject.transform.localScale = new Vector3(0,0,0);
+        yield return new WaitForSeconds(5f);
+        Debug.Log("slowing down");
+        FindObjectOfType<CodeyMove>().Speed -= speedBoost;
 
     }
 }
