@@ -17,19 +17,31 @@ public class Collectable : MonoBehaviour
     void Start()
     {
         startingPosition = gameObject.transform.position;
-        endingPosition = new Vector3(startingPosition.x + distanceToMove, startingPosition.y, startingPosition.z); 
+        endingPosition = new Vector3(startingPosition.x + distanceToMove, startingPosition.y, startingPosition.z);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(gameObject.transform.position.x < startingPosition.x)
+        if (gameObject.transform.position.x < startingPosition.x)
         {
+
             direction = 1f;
-        } 
-        if(gameObject.transform.position.x > endingPosition.x)
+        }
+        if (gameObject.transform.position.x > endingPosition.x)
         {
             direction = -1f;
+        }
+
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x + speed * direction * Time.deltaTime, startingPosition.y, startingPosition.z);
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            gameObject.SetActive(false);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MouseManager : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class MouseManager : MonoBehaviour
     public Vector3 slimeOriginalTransform;
     public Quaternion slimeOriginalRotation;
 
+    [Header("Lives")]
+    public LivesManager livesManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +31,12 @@ public class MouseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(livesManager.lives <= 0)
+        {
+            SceneManager.LoadScene(0);
+            return;
+        }
+
         if(Input.GetMouseButtonDown(0))
         {
             clickStartLocation = Input.mousePosition;
@@ -52,6 +62,7 @@ public class MouseManager : MonoBehaviour
             slimeTransform.position = slimeOriginalTransform;
             slimeTransform.rotation = slimeOriginalRotation;
             slimeRigidbody.isKinematic = true;
+            livesManager.RemoveLife();
         }
     }
 }
