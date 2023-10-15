@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sulky Slimes L2.unity
     guid: f3f01cd6ff45cd94291cadd178e061df
+  - enabled: 1
+    path: Assets/Scenes/You Win!.unity
+    guid: 7192077b9f4e57548a35f7c6fb3517aa
   m_configObjects: {}

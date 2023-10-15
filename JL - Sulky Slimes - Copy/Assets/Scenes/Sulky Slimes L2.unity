@@ -2038,7 +2038,7 @@ MonoBehaviour:
   distanceToMove: 27
   speed: 15
   direction: 1
-  sceneNumber: 1
+  sceneNumber: 2
 --- !u!54 &190487095
 Rigidbody:
   m_ObjectHideFlags: 0
