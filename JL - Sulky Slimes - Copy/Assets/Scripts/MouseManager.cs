@@ -7,6 +7,7 @@ public class MouseManager : MonoBehaviour
 {
     [Header("Mouse Info")]
     public Vector3 clickStartLocation;
+    public bool launched;
     
     [Header("Physics")]
     public Vector3 launchVector;
@@ -24,6 +25,7 @@ public class MouseManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        launched = false;
         slimeOriginalTransform = slimeTransform.position;
         slimeOriginalRotation = slimeTransform.rotation;
     }
@@ -41,28 +43,30 @@ public class MouseManager : MonoBehaviour
         {
             clickStartLocation = Input.mousePosition;
         }
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && launched == false)
         {
-            Vector3 mouseDifference = clickStartLocation - Input.mousePosition;
-            launchVector = new Vector3(
-                mouseDifference.x * 1f, 
-                mouseDifference.y * 1.2f,
-                mouseDifference.y * 1.5f
-            );
-            slimeTransform.position = slimeOriginalTransform - launchVector / 400;
-            launchVector.Normalize();
+                Vector3 mouseDifference = clickStartLocation - Input.mousePosition;
+                launchVector = new Vector3(
+                    mouseDifference.x * 1f,
+                    mouseDifference.y * 1.2f,
+                    mouseDifference.y * 1.5f
+                );
+                slimeTransform.position = slimeOriginalTransform - launchVector / 400;
+                launchVector.Normalize();
         }
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && launched == false)
         {
+            launched = true;
             slimeRigidbody.isKinematic = false;
             slimeRigidbody.AddForce(launchVector * launchForce, ForceMode.Impulse);
         }
-        if(Input.GetMouseButtonDown(1)||Input.GetKeyDown("space"))
+        if (Input.GetMouseButtonDown(1)||Input.GetKeyDown("space"))
         {
             slimeTransform.position = slimeOriginalTransform;
             slimeTransform.rotation = slimeOriginalRotation;
             slimeRigidbody.isKinematic = true;
             livesManager.RemoveLife();
+            launched = false;
         }
     }
 }
